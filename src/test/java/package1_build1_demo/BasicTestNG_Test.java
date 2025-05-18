@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 public class BasicTestNG_Test 
 {
 
-	@Test(priority=1,enabled=true)
+	@Test(priority=1,enabled=true,groups= {"SmokeTesting"})
 	public void signUp_Test()
 	{
 		//to fail the testcase
@@ -17,7 +17,7 @@ public class BasicTestNG_Test
 		
 	}
 	
-	@Test(priority=2,invocationCount=1,dependsOnMethods= {"signUp_Test"})
+	@Test(priority=2,invocationCount=1,groups= {"FT"})
 	public void login_Test()
 	{
 		
@@ -26,14 +26,14 @@ public class BasicTestNG_Test
 		Reporter.log("login_Test ------Testcase2");
 	}
 	
-	@Test(priority=3,dependsOnMethods= {"signUp_Test","login_Test"})
+	@Test(priority=3,groups= {"SmokeTesting","RegressionTesting"})
 	public void Homepage_Test()
 	{
-		Assert.assertTrue(false);
+		//Assert.assertTrue(false);
 		System.out.println("Homepage_Test Testcase3");
 	}
 	
-	@Test(priority=3,dependsOnMethods= {"Homepage_Test"})
+	@Test(priority=3,groups= {"RegressionTesting"})
 	public void logOut_Test()
 	{
 		

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+	<!--<groups>
+		<run>
+			<include name="RegressionTesting"></include>
+			<include name="FT"></include>
+		</run>
+	</groups>-->
+	
+  <test thread-count="5" name="Test">
+     <parameter name="browser" value="chrome"></parameter>
+   <!--<packages>
+	<package name="package1_build1_demo"></package>
+   </packages>-->
+   
+    <classes>
+    
+      <class name="Package_Build2.Testcases"/>
+     <!-- <class name="package1_build1_demo.BasicTestNG_Test">
+		
+		<methods>
+			<include name="signUp_Test"></include>
+			<include name="login_Test"></include>
+			<include name="Homepage_Test"></include>
+			<include name="logOut_Test"></include>
+			<exclude name="logOut_Test"></exclude>
+		</methods>
+		
+	</class>-->
+
+  
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

@@ -3,14 +3,19 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="package1_build1_demo.BasicTestNG_Test">
+      <class name="Package_Build2.Testcases">
         <methods>
-          <include name="login_Test"/>
-          <include name="signUp_Test"/>
-          <include name="Homepage_Test"/>
-          <include name="logOut_Test"/>
+          <include name="AfterClass_Test"/>
+          <include name="AfterSuite_Test"/>
+          <include name="BeforeTest_Test"/>
+          <include name="AfterTest_Test"/>
+          <include name="BeforeMethod_Test"/>
+          <include name="AfterMethod_Test"/>
+          <include name="BeforeClass_Test"/>
+          <include name="BeforeSuit_Test"/>
+          <include name="First_Test"/>
         </methods>
-      </class> <!-- package1_build1_demo.BasicTestNG_Test -->
+      </class> <!-- Package_Build2.Testcases -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

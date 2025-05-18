@@ -4,6 +4,7 @@ import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -17,10 +18,12 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 
+import pomPages.LoginPomPage;
+
 public class BaseClass 
 {
 	public WebDriver driver;
-	
+	public LoginPomPage lp;
 	
 	
 	@BeforeSuite
@@ -76,14 +79,30 @@ public class BaseClass
 		
 	}
 	@BeforeMethod
-	public void BeforeMethod_Test()
+	public void BeforeMethod_Test() throws InterruptedException
 	{
-		System.out.println("Before method is used for login");
-		driver.findElement(By.xpath("//input[@placeholder='Username']")).sendKeys("Admin");
 		
-		driver.findElement(By.xpath("//input[@placeholder='Password']")).sendKeys("admin123");
+		lp=new LoginPomPage(driver);
+		lp.logintoApp("Admin", "admin123");
+	
+		driver.navigate().refresh();
+		lp.logintoApp("Admin", "admin123");
 		
-		driver.findElement(By.xpath("//button[@type='submit']")).click();
+		lp.getLogin_btn().click();
+		Thread.sleep(8000);
+		
+		/*
+		 * System.out.println("Before method is used for login"); WebElement usn =
+		 * driver.findElement(By.xpath("//input[@placeholder='Username']"));
+		 * usn.sendKeys("Admin"); Thread.sleep(2000);
+		 * 
+		 * WebElement psw =
+		 * driver.findElement(By.xpath("//input[@placeholder='Password']"));
+		 * psw.sendKeys("admin123"); Thread.sleep(2000); driver.navigate().refresh();
+		 * //exception usn.sendKeys("Admin"); psw.sendKeys("admin123");
+		 * Thread.sleep(6000);
+		 * driver.findElement(By.xpath("//button[@type='submit']")).click();
+		 */
 	}
 	
 	
@@ -93,10 +112,10 @@ public class BaseClass
 		System.out.println("After method is used for Logout");
 	}
 	@AfterClass
-	public void AfterClass_Test()
+	public void AfterClass_Test() throws InterruptedException
 	{
 		System.out.println("quit the browser");
-		
+		Thread.sleep(5000);
 		driver.quit();
 	}
 	@AfterTest
